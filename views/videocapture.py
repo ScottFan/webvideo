@@ -47,21 +47,18 @@ def get_image():
     global stream, cap
     global width, height
     global encodedImage
-    #lock = Lock()
+    
     while True:
         if Running:
             try:
                 if cap.isOpened():
-                    #lock.acquire()
+                    
                     ret, orgFrame = cap.read()  
                     orgframe = cv2.resize(orgFrame, (width,height), interpolation = cv2.INTER_CUBIC) #将图片缩放
                     _ , encodedImage = cv2.imencode(".jpg",orgFrame)
-                    #lock.release()  
+                    
                     time.sleep(0.01)
-                    #yield(b'--frame\r\n' b'Content-Type : image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
-                    #if request != None:
-                        #yield (b'--frame\r\n'
-                                #b'Content-Type: image/jpeg\r\n\r\n' + encodedImage.tobytes()+ b'\r\n')                                   
+                    
                 else:
                     time.sleep(0.01)
             except GeneratorExit:
