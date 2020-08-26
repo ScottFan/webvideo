@@ -78,25 +78,6 @@ def get_image():
 th1 = threading.Thread(target = get_image)
 th1.setDaemon(True)
 th1.start()
-""" def Video():
-    while True:
-        if Running:
-            try:
-                if cap.isOpened():
-                    _ , encodedImage = cv2.imencode(".jpg",orgFrame)
-                    #yield(b'--frame\r\n' b'Content-Type : image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
-                    yield (b'--frame\r\n'
-                            b'Content-Type: image/jpeg\r\n\r\n' + encodedImage.tobytes()+ b'\r\n')
-                    time.sleep(0.01)
-            except GeneratorExit:
-                print("Client disconect!")
-                time.sleep(0.01)
-            except:               
-                time.sleep(0.01)
-                print("Exception")
-        else:
-            time.sleep(0.01) """
-
 
 
 

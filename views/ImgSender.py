@@ -15,7 +15,6 @@ class ImgSender:
         return super(ImgSender, cls).__new__(cls)
        
     def image_sender(self):
-        #lock = Lock()
         while True:
             if Running:
                 try:
@@ -23,19 +22,6 @@ class ImgSender:
                     time.sleep(0.05)
                     yield (b'--frame\r\n'
                                b'Content-Type: image/jpeg\r\n\r\n' + encodedImage.tobytes()+ b'\r\n')
-                    
-
-                    # if encodedImage != None:
-                    #     #lock.acquire()
-                    #     #ret, orgFrame = cap.read()  
-                    #     #_ , encodedImage = cv2.imencode(".jpg",orgFrame)
-                    #     #lock.release()  
-                    #     time.sleep(0.01)
-                    #     #yield(b'--frame\r\n' b'Content-Type : image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
-                    #     yield (b'--frame\r\n'
-                    #            b'Content-Type: image/jpeg\r\n\r\n' + encodedImage.tobytes()+ b'\r\n')                                   
-                    # else:
-                    #     time.sleep(0.01)
                 except GeneratorExit:
                     print("Client is disconnected-1!")
                     time.sleep(0.01)
