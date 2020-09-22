@@ -19,7 +19,7 @@ class ImgSender:
             if Running:
                 try:
                     encodedImage = getEncodedImg()
-                    time.sleep(0.05)
+                    time.sleep(0.04)
                     yield (b'--frame\r\n'
                                b'Content-Type: image/jpeg\r\n\r\n' + encodedImage.tobytes()+ b'\r\n')
                 except GeneratorExit:
